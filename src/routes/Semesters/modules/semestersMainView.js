@@ -56,7 +56,7 @@ export const semesterClick = (semesterId) => (dispatch, getState) => {
   }
 }
 
-export const modeButtonClick = (newMode) => (dispatch, getState) => {
+export const changeMode = (newMode) => (dispatch, getState) => {
   dispatch({
     type: SWITCH_MODE,
     // if new mode == current mode then set standard mode
