@@ -48,7 +48,7 @@ export const semesterClick = (semesterId) => (dispatch, getState) => {
       browserHistory.push(`/semester/${mode.properties[currentMode].uriName}${semesterId ? '/' + semesterId : ''}`)
       break
     case mode.remove:
-      deleteSemester(semesterId)(dispatch, getState)
+      dispatch(deleteSemester(semesterId))
       break
     default:
       browserHistory.push(`/subjects/${semesterId}`)
@@ -69,7 +69,7 @@ export const searchButtonClick = () => (dispatch, getState) => {
 
   const state = getState()
   if (!state.semestersView.main.showSearchBar) {
-    dispatch({ type: FILTER_SEMESTERS, payload: { semesters: state.semestersData.semesters, searchValue: '' } })
+    dispatch(filterSemesters(''))
   }
 }
 
