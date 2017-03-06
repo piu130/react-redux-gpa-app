@@ -1,13 +1,11 @@
 import { connect } from 'react-redux'
 import { loadSemesters } from '../modules/semestersData'
-import { semesterClick, modeButtonClick, searchButtonClick } from '../modules/semestersMainView'
+import { semesterClick } from '../modules/semestersMainView'
 
 import Semesters from '../components/Semesters'
 
 const mapDispatchToProps = {
   semesterClick,
-  modeButtonClick,
-  searchButtonClick,
   loadSemesters
 }
 
