@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { ERROR_OCCURRED } from '../../../store/rootReducers/error'
-import { FILTER_SEMESTERS, filterSemesters } from './semestersMainView'
+import { filterSemesters } from './semestersMainView'
 
 // ------------------------------------
 // Constants
@@ -24,7 +24,7 @@ export const loadSemesters = () => (dispatch, getState) => {
     .get(`users/${getState().user.id}/semesters`)
     .then((response) => {
       dispatch({ type: FETCH_INITIAL_DATA_FULFILLED, payload: response.data })
-      dispatch({ type: FILTER_SEMESTERS, payload: { semesters: getState().semestersData.semesters, searchValue: '' } })
+      dispatch(filterSemesters())
       return response
     })
     .catch((err) => {
