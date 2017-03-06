@@ -68,7 +68,7 @@ const LOGIN_ACTION_HANDLERS = {}
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = { submitting: false }
+const initialState = {}
 export default function loginReducer (state = initialState, action) {
   const handler = LOGIN_ACTION_HANDLERS[action.type]
 
