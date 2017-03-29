@@ -5,7 +5,7 @@ import { ERROR_OCCURRED } from '../../../store/rootReducers/error'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const register = (values, dispatch) => (dispatch, getState) => axios.post('users', JSON.stringify(values))
+export const register = (values, dispatch) => () => axios.post('users', JSON.stringify(values))
 
 export const registerSucceed = (result, dispatch) => {
   browserHistory.push('/login')

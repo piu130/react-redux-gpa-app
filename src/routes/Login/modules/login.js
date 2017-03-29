@@ -8,7 +8,7 @@ import { ERROR_OCCURRED } from '../../../store/rootReducers/error'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const login = (values, dispatch) => (dispatch, getState) => {
+export const login = (values, dispatch) => () => {
   if (!values.rememberMe) values.ttl = 10800 // set ttl to 3h if not remember me
   return axios.post('users/login', JSON.stringify(values))
 }
@@ -68,7 +68,7 @@ const LOGIN_ACTION_HANDLERS = {}
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = { submitting: false }
+const initialState = {}
 export default function loginReducer (state = initialState, action) {
   const handler = LOGIN_ACTION_HANDLERS[action.type]
 

@@ -7,6 +7,6 @@ module.exports = neutrino => {
     .loader('babel', ({ options }) => {
       options.presets = babelrcPresets
 
-      return { options };
+      return { options }
     })
-};
+}

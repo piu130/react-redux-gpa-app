@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { browserHistory } from 'react-router'
 import { semesterChanged } from '../../Semesters/modules/semestersData'
+import { changeMode, mode } from '../../Semesters/modules/semestersMainView'
 import { ERROR_OCCURRED } from '../../../store/rootReducers/error'
 
 // ------------------------------------
@@ -14,6 +15,7 @@ export const updateSemester = (values, dispatch) => (dispatch, getState) => axio
 
 export const updateSucceed = (result, dispatch) => {
   dispatch(semesterChanged(result.data))
+  dispatch(changeMode(mode.standard))
   browserHistory.goBack()
   return result.data
 }
