@@ -8,7 +8,7 @@ import { ERROR_OCCURRED } from '../../../store/rootReducers/error'
 // ------------------------------------
 // Actions
 // ------------------------------------
-export const login = (values, dispatch) => (dispatch, getState) => {
+export const login = (values, dispatch) => () => {
   if (!values.rememberMe) values.ttl = 10800 // set ttl to 3h if not remember me
   return axios.post('users/login', JSON.stringify(values))
 }
@@ -30,7 +30,7 @@ export const loginSucceed = (result, dispatch) => {
     .then((response) => {
       dispatch({ type: FETCHED_USER, payload: response.data })
 
-      browserHistory.push('semesters')
+      browserHistory.push('/semesters')
     })
     .catch((err) => {
       dispatch({ type: ERROR_OCCURRED, payload: err })
@@ -58,7 +58,7 @@ export const logout = (store) => {
   delete axios.defaults.headers.common[ 'Authorization' ]
   Cookies.remove('authToken')
 
-  browserHistory.push('login')
+  browserHistory.push('/login')
 }
 
 export const actions = {}
@@ -68,7 +68,7 @@ const LOGIN_ACTION_HANDLERS = {}
 // ------------------------------------
 // Reducer
 // ------------------------------------
-const initialState = { submitting: false }
+const initialState = {}
 export default function loginReducer (state = initialState, action) {
   const handler = LOGIN_ACTION_HANDLERS[action.type]
 

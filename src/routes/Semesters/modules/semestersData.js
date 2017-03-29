@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { ERROR_OCCURRED } from '../../../store/rootReducers/error'
-import { FILTER_SEMESTERS } from './semestersMainView'
+import { filterSemesters } from './semestersMainView'
 
 // ------------------------------------
 // Constants
@@ -24,7 +24,7 @@ export const loadSemesters = () => (dispatch, getState) => {
     .get(`users/${getState().user.id}/semesters`)
     .then((response) => {
       dispatch({ type: FETCH_INITIAL_DATA_FULFILLED, payload: response.data })
-      dispatch({ type: FILTER_SEMESTERS, payload: { semesters: getState().semestersData.semesters, searchValue: '' } })
+      dispatch(filterSemesters())
       return response
     })
     .catch((err) => {
@@ -38,13 +38,7 @@ export const deleteSemester = (semesterId) => (dispatch, getState) => {
   dispatch({ type: DELETE_SEMESTER, payload: semesterId })
 
   const state = getState()
-  dispatch({
-    type: FILTER_SEMESTERS,
-    payload: {
-      semesters: state.semestersData.semesters,
-      searchValue: state.form.searchBarForm ? state.form.searchBarForm.values.searchSemesterField : ''
-    }
-  })
+  dispatch(filterSemesters(state.form.searchBarForm ? state.form.searchBarForm.values.searchSemesterField : ''))
 
   axios
     .delete(`semesters/${semesterId}`)
@@ -54,7 +48,10 @@ export const deleteSemester = (semesterId) => (dispatch, getState) => {
     })
 }
 
-export const actions = {}
+export const semesterChanged = (semester) => (dispatch) => {
+  dispatch({ type: SEMESTER_CHANGED, payload: semester })
+  dispatch(filterSemesters())
+}
 
 const SEMESTERS_ACTION_HANDLERS = {
   [FETCH_INITIAL_DATA_PENDING]: (state) => ({ ...state, fetching: true }),

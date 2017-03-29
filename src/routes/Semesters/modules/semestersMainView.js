@@ -28,6 +28,15 @@ export const mode = {
 // ------------------------------------
 // Actions
 // ------------------------------------
+export const filterSemesters = (filterValue = '') => (dispatch, getState) => {
+  dispatch({
+    type: FILTER_SEMESTERS,
+    payload: {
+      semesters: getState().semestersData.semesters,
+      searchValue: filterValue
+    }
+  })
+}
 
 export const semesterClick = (semesterId) => (dispatch, getState) => {
   const currentMode = getState().semestersView.main.mode
@@ -36,18 +45,18 @@ export const semesterClick = (semesterId) => (dispatch, getState) => {
     case mode.edit:
     case mode.info:
       dispatch({ type: SET_SELECTED_SEMESTER, payload: semesterId })
-      browserHistory.push(`semester/${mode.properties[currentMode].uriName}${semesterId ? '/' + semesterId : ''}`)
+      browserHistory.push(`/semester/${mode.properties[currentMode].uriName}${semesterId ? '/' + semesterId : ''}`)
       break
     case mode.remove:
-      deleteSemester(semesterId)(dispatch, getState)
+      dispatch(deleteSemester(semesterId))
       break
     default:
-      browserHistory.push(`subjects?semesterId=${semesterId}`)
+      browserHistory.push(`/subjects/${semesterId}`)
       break
   }
 }
 
-export const modeButtonClick = (newMode) => (dispatch, getState) => {
+export const changeMode = (newMode) => (dispatch, getState) => {
   dispatch({
     type: SWITCH_MODE,
     // if new mode == current mode then set standard mode
@@ -60,7 +69,7 @@ export const searchButtonClick = () => (dispatch, getState) => {
 
   const state = getState()
   if (!state.semestersView.main.showSearchBar) {
-    dispatch({ type: FILTER_SEMESTERS, payload: { semesters: state.semestersData.semesters, searchValue: '' } })
+    dispatch(filterSemesters(''))
   }
 }
 
