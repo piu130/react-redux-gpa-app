@@ -1,0 +1,39 @@
+{
+  "name": "semester",
+  "plural": "semesters",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {},
+  "properties": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "school": {
+      "type": "string"
+    },
+    "start": {
+      "type": "date"
+    },
+    "end": {
+      "type": "date"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$owner",
+      "permission": "ALLOW"
+    }
+  ],
+  "methods": {}
+}
