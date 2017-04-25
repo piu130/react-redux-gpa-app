@@ -1,4 +1,5 @@
 import React from 'react'
+import { PropTypes } from 'prop-types'
 import Header from '../../containers/HeaderContainer'
 import Error from '../../containers/ErrorContainer'
 import './CoreLayout.scss'
@@ -15,7 +16,7 @@ export const CoreLayout = ({ children }) => (
 )
 
 CoreLayout.propTypes = {
-  children : React.PropTypes.element.isRequired
+  children : PropTypes.element.isRequired
 }
 
 export default CoreLayout
