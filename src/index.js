@@ -29,7 +29,7 @@ let render = () => {
 }
 
 if (module.hot) {
-  module.hot.accept('./containers/AppContainer', render);
+  module.hot.accept('./containers/AppContainer', render)
 }
 
 // ========================================================

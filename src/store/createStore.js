@@ -14,7 +14,7 @@ export default (initialState = {}) => {
     makeRootReducer(),
     initialState,
     compose(
-      applyMiddleware(...middleware),
+      applyMiddleware(...middleware)
     )
   )
   store.asyncReducers = {}
