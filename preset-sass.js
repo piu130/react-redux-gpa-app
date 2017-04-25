@@ -1,0 +1,11 @@
+module.exports = ({ config }) => config.module
+    .rule('scss')
+      .test(/\.scss$/)
+        .use('style')
+          .loader(require.resolve('style-loader'))
+          .end()
+        .use('css')
+          .loader(require.resolve('css-loader'))
+          .end()
+        .use('sass')
+          .loader(require.resolve('sass-loader'))
