@@ -87,6 +87,6 @@
     "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.2",
-    "style-loader": "^0.16.1"
+    "style-loader": "^0.17.0"
   }
 }
