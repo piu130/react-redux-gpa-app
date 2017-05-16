@@ -10,7 +10,7 @@
     "start": "neutrino start --use neutrino-preset-react",
     "build": "neutrino build --use neutrino-preset-react",
     "test": "neutrino test --use neutrino-preset-react neutrino-preset-karma",
-    "lint": "eslint src neutrino-custom.js",
+    "lint": "eslint src neutrino-custom.js preset-sass.js",
     "deploy": "npm run lint && npm run test && npm run clean && npm run build",
     "clean": "rimraf build",
     "codecov": "cat coverage/*/lcov.info | codecov"
