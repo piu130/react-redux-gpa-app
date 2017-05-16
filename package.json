@@ -27,12 +27,6 @@
       "output": {
         "filename": "[name].[hash].js",
         "publicPath": "/"
-      },
-      "devServer": {
-        "watchOptions": {
-          "aggregateTimeout": 300,
-          "poll": 1000
-        }
       }
     }
   },
