@@ -13,7 +13,7 @@
     "lint": "eslint src neutrino-custom.js preset-sass.js",
     "deploy": "npm run lint && npm run test && npm run clean && npm run build",
     "clean": "rimraf build",
-    "codecov": "cat coverage/*/lcov.info | codecov"
+    "coverage": "neutrino test --coverage"
   },
   "neutrino": {
     "use": [
