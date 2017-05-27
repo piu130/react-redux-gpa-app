@@ -9,7 +9,7 @@
   "scripts": {
     "start": "neutrino start --use neutrino-preset-react",
     "build": "neutrino build --use neutrino-preset-react",
-    "test": "neutrino test --use neutrino-preset-react neutrino-preset-karma",
+    "test": "neutrino test --use neutrino-preset-react neutrino-preset-jest",
     "lint": "eslint src neutrino-custom.js preset-sass.js",
     "deploy": "npm run lint && npm run test && npm run clean && npm run build",
     "clean": "rimraf build",
@@ -18,7 +18,7 @@
   "neutrino": {
     "use": [
       "neutrino-preset-react",
-      "neutrino-preset-karma",
+      "neutrino-preset-jest",
       "neutrino-custom.js",
       "preset-sass.js"
     ],
@@ -59,6 +59,7 @@
     "babel-preset-stage-0": "^6.3.13",
     "codecov": "^2.1.0",
     "css-loader": "^0.28.0",
+    "enzyme": "^2.8.2",
     "eslint": "^3.16.1",
     "eslint-config-standard": "^10.2.1",
     "eslint-config-standard-react": "^5.0.0",
@@ -69,12 +70,12 @@
     "eslint-plugin-react": "^7.0.0",
     "eslint-plugin-standard": "^3.0.1",
     "neutrino": "^5.6.0",
-    "neutrino-preset-karma": "^5.6.0",
+    "neutrino-preset-jest": "^5.9.0",
     "neutrino-preset-react": "^5.6.0",
     "node-sass": "^4.5.0",
     "npm-check-updates": "^2.10.3",
     "postcss-loader": "^2.0.2",
-    "react-addons-test-utils": "^15.0.0",
+    "react-addons-test-utils": "^15.5.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "rimraf": "^2.6.1",
     "sass-loader": "^6.0.2",
